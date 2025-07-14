@@ -1,0 +1,12 @@
+/* Remove default browser spacing */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Optional: make sure body takes full height */
+html, body, #root {
+  height: 100%;
+  background-color: #f7f7f7;
+}

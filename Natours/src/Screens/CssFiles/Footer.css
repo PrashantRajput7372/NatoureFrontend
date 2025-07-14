@@ -1,0 +1,169 @@
+.footer_wraper {
+  border-top: 0.5px solid #dad8d8;
+  background: #f9f9f9;
+  padding: 20px 0;
+}
+
+.footer_container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  /* gap: 30px; */
+}
+
+/* Logo + Text */
+.logo_containerF {
+  display: flex;
+  align-items: center;
+  
+}
+
+.logo {
+  color: #a3ecaf;
+  font-size: 2rem;
+  font-family: fantasy;
+  white-space: nowrap;
+}
+
+.logo .nat {
+  color: #222;
+}
+
+.logo .ours {
+  background: linear-gradient(to right, #007bff, #e40f7a);
+  background-clip: border-box;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.logo_img {
+  width: 50px;
+  height: 50px;
+  object-fit: contain;
+}
+
+/* Social icons */
+.social_icons_container {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+}
+
+.social_icons_container svg {
+  height: 36px;
+  width: 36px;
+  color: #333;
+  transition: color 0.3s ease;
+  align-items: center;
+  justify-content: center;
+  padding: 5px;
+}
+
+.social_icons_container svg:hover {
+  color: #007bff;
+  cursor: pointer;
+}
+
+/* Payment */
+.paymentChannels h3 {
+  /* margin-bottom: 10px; */
+  font-size: 1rem;
+}
+
+.paymentChannels img {
+  width: 40px;
+  height: 40px;
+  margin-right: 10px;
+  object-fit: contain;
+}
+
+/* Footer Links */
+.footer_links {
+  display: flex;
+  width: 100%;
+  gap: 40px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.footer_items {
+  min-width: 150px;
+}
+
+.footer_items span {
+  display: block;
+  margin-top: 5px;
+  font-size: 0.95rem;
+  color: #444;
+}
+
+/* -------------------------------------
+   📱 Responsive Media Queries 
+-------------------------------------- */
+
+/* 900px and below */
+@media (max-width: 900px) {
+  .footer_container {
+    justify-content: space-around;
+  }
+}
+
+/* 600px and below */
+@media (max-width: 600px) {
+  .footer_container {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .logo_containerF {
+    justify-content: center;
+  }
+
+  .footer_links {
+    justify-content: center;
+  }
+
+  .social_icons_container {
+    justify-content: center;
+  }
+}
+
+/* 480px and below */
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  .paymentChannels img {
+    width: 30px;
+    height: 30px;
+  }
+
+  .social_icons_container svg {
+    width: 30px;
+    height: 30px;
+  }
+}
+
+/* 360px and below */
+@media (max-width: 360px) {
+  .footer_items {
+    min-width: 100%;
+  }
+
+  .footer_links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .social_icons_container {
+    flex-direction: row;
+    gap: 10px;
+  }
+}

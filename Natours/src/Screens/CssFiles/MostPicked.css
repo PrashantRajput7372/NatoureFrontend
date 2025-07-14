@@ -1,0 +1,77 @@
+.fav-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.fav-content {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.fav-card {
+  width: 100%;
+  max-width: 250px;
+  height: 350px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background: white;
+  flex: 1 1 250px;
+}
+
+.fav_img {
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  display: block;
+}
+
+.fav_text {
+  padding: 10px;
+  text-align: center;
+}
+
+/* Medium Screens (Tablets) */
+@media (max-width: 768px) {
+  .fav-card {
+    max-width: 45%;
+  }
+}
+
+/* Small Tablets */
+@media (max-width: 600px) {
+  .fav-card {
+    max-width: 48%;
+  }
+
+  .fav-content {
+    gap: 20px;
+    justify-content: center;
+  }
+}
+
+/* Phones */
+@media (max-width: 480px) {
+  .fav-card {
+    max-width: 100%;
+  }
+
+  .fav-wrapper {
+    padding: 15px;
+  }
+}
+
+/* Very Small Phones */
+@media (max-width: 370px) {
+  .fav-card {
+    max-width: 100%;
+    font-size: 14px;
+  }
+
+  .fav-wrapper {
+    padding: 10px;
+  }
+}

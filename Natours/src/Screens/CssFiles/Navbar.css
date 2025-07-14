@@ -1,0 +1,248 @@
+.navbar_container {
+  margin: 0;
+  width: 100%;
+  height: 75px;
+  padding: 5px 16px;
+  background-color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #666;
+  position: sticky;
+  top: 0;
+  left: 0;
+  z-index: 99;
+}
+
+/* -------- LOGO -------- */
+.logo_container {
+  display: flex;
+  align-items: center;
+  gap: 0px;
+}
+.profile{
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+.dropdown-menu {
+  position: absolute;
+  top: 70px;
+  right: 20px;
+  background: white;
+  border: 1px solid #ccc;
+  padding: 10px 16px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+  z-index: 100;
+  min-width: 180px;
+}
+
+.dropdown-menu p {
+  margin: 5px 0;
+  font-size: 20px;
+    font-family: serif;
+}
+
+
+.dropdown-menu button {
+  width: 100%;
+  padding: 8px;
+  background-color: #e74c3c;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+.dropdown-menu button:hover {
+  background-color: #c0392b;
+}
+
+
+.logo {
+  color: #a3ecaf;
+  font-size: 2rem;
+  font-family: fantasy;
+  white-space: nowrap;
+}
+
+.logo .nat {
+  color: #222;
+}
+
+.logo .ours {
+  background: linear-gradient(to right, #007bff, #e40f7a);
+  background-clip: border-box;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.logo_img {
+  width: 50px;
+  height: 50px;
+  max-width: 100%;
+  object-fit: contain;
+}
+
+/* -------- NAV LINKS -------- */
+.navbar_Links {
+  display: flex;
+  align-items: center; /* Ensures vertical centering */
+  gap: 16px;
+}
+
+.hText,
+.navButton {
+  display: flex;
+  align-items: center;  /* Center content vertically */
+  height: 40px;          /* Equal height for all */
+  padding: 0 10px;
+  font-size: 1.1rem;
+  line-height: 1;
+  border: none;
+  background: none;
+  cursor: pointer;
+}
+
+.navButton {
+  background-color: #007bff;
+  color: white;
+  border-radius: 6px;
+  border: none;
+  padding: 0 16px;
+  height: 40px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
+}
+
+
+/* ================= Responsive ================= */
+
+/* Tablets */
+@media (max-width: 768px) {
+  .logo {
+    font-size: 1.7rem;
+  }
+
+  .logo_img {
+    width: 45px;
+    height: 45px;
+  }
+
+  .hText,
+  .navButton {
+    font-size: 1.1rem;
+  }
+}
+
+/* Small Tablets */
+@media (max-width: 600px) {
+  .navbar_container {
+    padding: 5px 10px;
+  }
+
+  .logo {
+    font-size: 1.6rem;
+  }
+
+  .hText,
+  .navButton {
+    font-size: 1rem;
+    margin-right: 10px;
+  }
+}
+
+/* Phones */
+@media (max-width: 480px) {
+  .logo {
+    font-size: 1.5rem;
+  }
+
+  .navbar_Links {
+    gap: 10px;
+  }
+
+  .hText {
+    font-size: 0.95rem;
+  }
+
+  .navButton {
+    font-size: 1rem;
+    padding: 4px 10px;
+  }
+}
+
+/* Very Small Phones */
+@media (max-width: 370px) {
+  .logo {
+    font-size: 1.3rem;
+  }
+
+  .logo_img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .hText,
+  .navButton {
+    font-size: 0.85rem;
+  }
+
+  .navButton {
+    padding: 3px 8px;
+  }
+}
+
+/* ================== 🔥 TOGGLE MENU ADDED HERE 🔥 ================== */
+
+/* Hamburger icon */
+.menu_icon {
+  display: none;
+  font-size: 2rem;
+  cursor: pointer;
+  color: #333;
+  z-index: 1001;
+}
+
+/* Small screen menu */
+@media (max-width: 768px) {
+  .menu_icon {
+    display: block;
+  }
+
+  .navbar_Links {
+    display: none;
+    flex-direction: column;
+    align-items: flex-start;
+    position: absolute;
+    top: 75px;
+    left: 0;
+    width: 100%;
+    background-color: white;
+    padding: 15px 20px;
+    border-bottom: 2px solid #ccc;
+    z-index: 999;
+  }
+
+  .navbar_Links.show {
+    display: flex;
+  }
+
+  .hText,
+  .navButton {
+    .navButton {
+    align-self: flex-start;
+    width: auto;
+    padding: 8px 20px;
+    font-size: 1rem;
+    margin-top: 8px;
+    border-radius: 25px;
+  }
+}
+}

@@ -1,0 +1,164 @@
+.tour-wrapper {
+  font-family: sans-serif;
+}
+
+/* Hero */
+.tour-hero {
+  height: 50vh;
+  width: 100vw;
+  overflow: hidden;
+}
+.tour-hero img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* Info Section */
+.tour-info-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 40px ;
+}
+
+.tour-facts {
+  position: relative; 
+  font-size: 20px;           /* Needed for absolute child */
+  flex: 1 1 300px;
+  background-color: #d6d4d4;
+  padding: 20px;
+  border-top-left-radius: 20px;
+  
+  /* overflow: hidden; */
+  z-index: 0; /* Make sure it's below content but above background */
+}
+
+.tour-facts p{
+    margin: 10px;
+}
+
+.tour-facts::after {
+  content: "";
+  position: absolute;
+  top: 100%;          
+  left: 0;
+  right: 0;
+  height: 300px; 
+  background-color: #d6d4d4;
+  z-index: -1;        /* Push it behind the box */
+  
+}
+.tourContainer{
+    /* margin: 20px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 40px 40px 0px 40px;
+}
+.tourContainer h2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(to right, rgb(2, 2, 228), rgb(73, 55, 233), rgb(255, 0, 0));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.tourContainer span{
+    font-weight: 700;
+}
+
+.tour-about {
+  flex: 1 1 300px;
+  padding: 20px;
+  /* background: #e9e3e3; */
+  margin: 10px;
+  font-size: 20px;
+  border-radius: 8px;
+  justify-content: center;
+}
+.tour-about h2{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+    background: linear-gradient(to right, rgb(2, 2, 228), rgb(73, 55, 233), rgb(255, 0, 0));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.tour-about p{
+    display: flex;
+    justify-content: center;
+    margin: 50px 10px 50px 10px;
+}
+
+.tour-guide {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+  /* align-items: center;
+  justify-content: center; */
+  
+}
+.tour-guide img {
+ position: relative;
+  width: 70px;
+  height: 70px;
+  border-radius: 5px;
+  object-fit: cover;
+  z-index: 4;
+}
+
+/* Slanted Image Section */
+
+
+/* This is for your slanted image strip */
+
+.image-strip-wrapper {
+  display: flex;
+  transform: skewY(-5deg);
+  align-items: center;
+  justify-content: center;
+  height: 550px;
+  padding: 40px;
+  /* overflow: hidden; */
+  /* background-color: #e9e3e3; Optional: background fill under image strip */
+}
+
+.image-strip-card {
+  display: flex;
+  max-height: 550px;
+  /* transform: skewY(5deg); Counter skew to keep image straight */
+  /* overflow: hidden; */
+  /* margin: 0 10px; */
+}
+
+.image-strip-card img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* Sections Below */
+.tour-section {
+  padding: 30px;
+  color: white;
+  font-weight: bold;
+  text-align: center;
+}
+.tour-map {
+  /* background-color: #e70c3c; */
+}
+.tour-reviews {
+  display: flex;
+  flex-direction: row;
+  /* gap: 40px; */
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 0px 40px 0px 40px;
+  scroll-behavior: smooth;
+  
+}
+.tour-book {
+  background-color: #e80c3c;
+}

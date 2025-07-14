@@ -1,0 +1,53 @@
+.rev-card{
+   flex: 0 0 auto; /* Prevent shrinking */
+  /* width: 4450px; */
+  padding: 40px;
+  text-align: left;
+  white-space: normal; 
+}
+
+    .rev-inner {
+ width:400px;
+ height:300px;
+  border:1px solid black;
+  border-radius: 8px;
+   padding:20px
+}
+.img-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px;
+}
+.rev-img{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 70px;
+     width: 70px;
+     border-radius: 50%;
+}
+.rev-name {
+  color: green;
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rev-description {
+  color: black;
+  text-align: left;
+  margin-top: 5px;
+}
+
+.rev-stars {
+    
+    display: flex;
+  color: orange;
+  
+  align-items: center;
+  justify-content: center;
+  font-size: 25px;
+  font-weight: 500;
+}

@@ -1,0 +1,72 @@
+.tours-nav-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 20px;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  margin-bottom: 20px;
+}
+
+/* Tabs Section */
+.tabs {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.tab-btn {
+  min-width: 120px;
+  text-align: center;
+  padding: 10px 16px;
+  background-color: #ffffff;
+  border: 1px solid #007bff;
+  border-radius: 6px;
+  color: #007bff;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease-in-out;
+  white-space: nowrap;
+}
+
+
+.tab-btn:hover,
+.tab-btn.active {
+  background-color: #3706f8;
+  color: #fff;
+}
+
+/* Filters Section */
+.filters {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-left: auto;
+}
+
+
+.filter-select {
+  min-width: 140px;
+  padding: 10px 16px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #007bff;
+  background-color: #ffffff;
+  color: #007bff;
+  font-weight: 500;
+  cursor: pointer;
+  appearance: none;
+  text-align: center;
+}
+
+
+.filters {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  margin-left: auto;
+}
