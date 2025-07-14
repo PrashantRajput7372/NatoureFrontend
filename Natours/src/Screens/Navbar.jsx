@@ -56,6 +56,7 @@ function Navbar() {
   const handleLogout = () => {
     logout();
     setAuthCode(null); // clear token in context
+    navigate("/")
   };
   const handleProfileClick = () => {
     setShowDropDown((prev) => (!prev ? true : false));

@@ -17,7 +17,7 @@ const AllTours = () => {
         if (difficulty) endpoint += `?difficulty=${difficulty}`;
         if (sort && difficulty) endpoint += `&sort=${sort}`;
         if (sort && !difficulty) endpoint += `?sort=${sort}`;
-        console.log(endpoint);
+        
         const res = await axios.get(endpoint);
         setTours(res.data.data.tours);
       } catch (error) {
@@ -28,11 +28,11 @@ const AllTours = () => {
     fetchTours();
   }, [difficulty, sort]);
   useEffect(() => {
-    console.log(difficulty);
-    console.log(sort);
+    
+    
   }, [difficulty, sort]);
   const handleMoreDetails = (id) => {
-    console.log(id);
+    
     navigate(`/tours/${id}`);
   };
 

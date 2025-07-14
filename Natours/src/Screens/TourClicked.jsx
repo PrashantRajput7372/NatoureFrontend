@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from "react";
-// import { IoPeople } from "react-icons/io5"
-import { MdPeopleAlt } from 'react-icons/md';
+
+import { MdPeopleAlt } from "react-icons/md";
 import { useParams } from "react-router-dom";
-import Difficulty from "../assets/difficult.png"
-// import "leaflet/dist/leaflet.css";
-// import { MapContainer, TileLayer, Marker, Popup } from "react-leaflet";
-// import FitMapBounds from "./fitMapBounds";
+import { GiWeightLiftingUp } from "react-icons/gi";
+import { IoPeople } from "react-icons/io5";
+import { FaStar } from "react-icons/fa6";
+import TourMap from "./FitMapBounds";
 
 import axios from "../Utils/axiosInstance";
 import "./CssFiles/TourClicked.css";
-import ReviewCard from "./ReviewCard";
+import ReviewCard from "./ReviewScreen/ReviewCard";
+import AddReview from "./ReviewScreen/AddReview";
+import Footer from "./Footer";
+
 const TourClicked = () => {
   const { id } = useParams();
   const [data, setData] = useState(null);
+  const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const fetchTour = async () => {
@@ -32,6 +36,7 @@ const TourClicked = () => {
   return (
     <div className="tour-wrapper">
       {console.log(data)}
+
       {/* HERO */}
       <div className="tour-hero">
         <img
@@ -45,34 +50,49 @@ const TourClicked = () => {
         <div className="tour-facts">
           <div className="tourContainer">
             <div>
-              <div><h2>Quick Facts</h2></div>
-            <div><p><span>Difficulty</span> {data.difficulty}</p></div>
-            <div><p><span>Participants</span> {data.maxGroupSize}</p></div>
-            <div><p><span>Ratings</span> {data.ratingsAverage} / 5</p></div>
+              <div>
+                <h2>Quick Facts</h2>
+              </div>
+              <div>
+                <p>
+                  <GiWeightLiftingUp /> <span>Difficulty</span>{" "}
+                  {data.difficulty.toUpperCase()}
+                </p>
+              </div>
+              <div>
+                <p>
+                  <MdPeopleAlt /> <span>Participants</span> {data.maxGroupSize}
+                </p>
+              </div>
+              <div>
+                <p>
+                  <FaStar /> <span>Ratings</span>{" "}
+                  {data.ratingsAverage.toFixed(1)} / 5
+                </p>
+              </div>
             </div>
           </div>
           <div className="tourContainer">
-            <div ><h2 >Your Travel Guides</h2>
-            
+            <div>
+              <h2>Your Travel Guides</h2>
+
               {data.guides.map((guide) => (
-              <div className="tour-guide" key={guide._id}>
-                <img
-                  src={`http://localhost:3000/img/users/${guide.photo}`}
-                  alt={guide.name}
-                />
-                <p>
-                  <strong>{guide.role}</strong>: {guide.name}
-                </p>
-              </div>
-            ))}
+                <div className="tour-guide" key={guide._id}>
+                  <img
+                    src={`http://localhost:3000/img/users/${guide.photo}`}
+                    alt={guide.name}
+                  />
+                  <p>
+                    <strong>{guide.role}</strong>: {guide.name}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
         <div className="tour-about">
-          
-            <h2>About {data.name}</h2>
-            <p>{data.description}</p>
-          
+          <h2>About {data.name}</h2>
+          <p>{data.description}</p>
         </div>
       </div>
 
@@ -86,24 +106,26 @@ const TourClicked = () => {
       </div>
 
       {/* MAP / REVIEWS / BOOK */}
-      <div className="tour-section tour-map">Map will come here</div>
-      <div className="tour-section tour-reviews">
-        {data.reviews.map((review, i) => (
-          <ReviewCard key={i} review={review} />
-        ))}
+      <div className="tour-section tour-map">
+        <TourMap locations={data.locations} />
       </div>
-      <div
-        style={{
-          display: "flex",
-          justifyContent: "center",
-          alignItems: "center",
-          padding:"20px",
-          backgroundColor:"#69CE75"
-        }}
-      >
+      <div className="reviews-section">
+        <div className="tour-section tour-reviews">
+          {data.reviews.map((review, i) => (
+            <ReviewCard key={i} review={review} />
+          ))}
+        </div>
+      </div>
+
+      <div onClick={() => setOpen(true)} className="add-review">
         ADD Review
       </div>
-      <div className="tour-section tour-book">Booking section</div>
+
+      <div className="tour-section tour-book">
+        Booking section Work is in process
+      </div>
+      <AddReview open={open} onClose={() => setOpen(false)} tourid={data._id} />
+      <Footer />
     </div>
   );
 };

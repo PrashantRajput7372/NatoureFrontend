@@ -21,9 +21,8 @@ function TOP5() {
 
   return (
     <div className="all-tours-container">
-       <ToursNavBar/>
-      
- 
+      <ToursNavBar />
+
       <div className="tour-grid">
         {tours.map((item, index) => (
           <div key={index} className="tour-card">
@@ -51,7 +50,6 @@ function TOP5() {
         ))}
       </div>
     </div>
-
   );
 }
 

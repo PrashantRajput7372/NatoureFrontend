@@ -6,7 +6,6 @@ export const login = async (email, password) => {
   return res.data.token; // Backend se milne wala token
 };
 
-
 export const logout = () => {
   localStorage.removeItem("authToken");
 };
@@ -14,17 +13,28 @@ export const logout = () => {
 export const getAuthCode = () => {
   return localStorage.getItem("authToken");
 };
-export const signUp = async(email,name,password,confirmPassword,phoneNumber)=>{
-  const res = await axios.post("/user/signup",{email,name,password,confirmPassword,phoneNumber})
-  return res.data
+export const signUp = async (
+  email,
+  name,
+  password,
+  confirmPassword,
+  phoneNumber
+) => {
+  const res = await axios.post("/user/signup", {
+    email,
+    name,
+    password,
+    confirmPassword,
+    phoneNumber,
+  });
+  return res.data;
 };
 
 export const alltour = async () => {
   try {
-    const res = await axios.get("/tours" )
-      
+    const res = await axios.get("/tours");
+
     return res.data;
-    
   } catch (err) {
     console.error("Failed to fetch user:", err);
     throw err;
@@ -45,7 +55,7 @@ export const getMe = async (token) => {
   }
 };
 
-export const top5Tours = async()=>{
-  const res = await axios.get("/tours/top-5-tours")
-  return res.data.data
-}
+export const top5Tours = async () => {
+  const res = await axios.get("/tours/top-5-tours");
+  return res.data.data;
+};
