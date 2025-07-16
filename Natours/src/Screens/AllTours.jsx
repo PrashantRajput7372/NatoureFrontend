@@ -13,7 +13,7 @@ const AllTours = () => {
   useEffect(() => {
     const fetchTours = async () => {
       try {
-        let endpoint = "http://localhost:3000/api/v1/tours";
+        let endpoint = "https://natours-production-b09b.up.railway.app/api/v1/tours";
         if (difficulty) endpoint += `?difficulty=${difficulty}`;
         if (sort && difficulty) endpoint += `&sort=${sort}`;
         if (sort && !difficulty) endpoint += `?sort=${sort}`;
@@ -46,7 +46,7 @@ const AllTours = () => {
             key={item.id}
             className="tour-card">
             <img
-              src={`http://localhost:3000/img/tours/${item.imageCover}`}
+              src={`https://natours-production-b09b.up.railway.app/img/tours/${item.imageCover}`}
               alt={item.name}
               className="tour-image"
             />

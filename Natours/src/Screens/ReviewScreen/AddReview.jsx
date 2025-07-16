@@ -23,7 +23,8 @@ const AddReview = ({ open, tourid, onClose }) => {
         window.location.reload();
       }
     } catch (err) {
-      console.error("Review update failed", err);
+      alert(err.response.data.message);
+      console.error("Review update failed", err.response.data.message);
     }
   };
 
@@ -50,7 +51,7 @@ const AddReview = ({ open, tourid, onClose }) => {
           </Typography>
 
           <Rating
-            value={rating}
+            value={Number(rating)}
             onChange={(e, newValue) => setRating(newValue)}
           />
 

@@ -27,7 +27,7 @@ function TOP5() {
         {tours.map((item, index) => (
           <div key={index} className="tour-card">
             <img
-              src={`http://localhost:3000/img/tours/${item.imageCover}`}
+              src={`https://natours-production-b09b.up.railway.app/img/tours/${item.imageCover}`}
               alt={item.name}
               className="tour-image"
             />

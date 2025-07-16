@@ -38,7 +38,7 @@ const ReviewCard = ({ review }) => {
 
           <div className="img-container">
             <img
-              src={`http://localhost:3000/img/users/${review.user.photo}`}
+              src={`https://natours-production-b09b.up.railway.app/img/users/${review.user.photo}`}
               alt={"userImage"}
               className="rev-img"
             />

@@ -48,12 +48,15 @@ function Navbar() {
 }, [user]);
 
   const handleSignUp = () => {
+    setMenuOpen(false)
     navigate("/signup");
   };
   const handleLogin = () => {
+    setMenuOpen(false)
     navigate("/login");
   };
   const handleLogout = () => {
+    setMenuOpen(false)
     logout();
     setAuthCode(null); // clear token in context
     navigate("/")
@@ -62,9 +65,11 @@ function Navbar() {
     setShowDropDown((prev) => (!prev ? true : false));
   };
   const handleAllTours = () => {
+    setMenuOpen(false)
     navigate("/AllTours");
   };
   const handleHomeClick = () => {
+    setMenuOpen(false)
     navigate("/");
   };
 
@@ -82,7 +87,7 @@ function Navbar() {
         </div>
       </div>
 
-      <div className={`navbar_Links ${menuOpen ? "show" : ""}`}>
+      <div  ref={menudots} className={`navbar_Links ${menuOpen ? "show" : ""}`}>
         <div className="hText" onClick={handleAllTours}>
           All Tours
         </div>
@@ -98,7 +103,7 @@ function Navbar() {
             <img
               src={
                 user?.data?.data?.photo
-                  ? `http://localhost:3000/img/users/${user.data.data.photo}`
+                  ? `https://natours-production-b09b.up.railway.app/img/users/${user.data.data.photo}`
                   : "https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small_2x/user-profile-icon-free-vector.jpg"
               }
               alt="User"
@@ -117,6 +122,7 @@ function Navbar() {
                 </p>
                 <p>{`Email: ${user.data?.data?.email}`}</p>
                 <p>{`PhoneNo.: ${user.data?.data?.phoneNumber}`}</p>
+                <button style={{backgroundColor:"blue"}}>My Profile</button>
                 <button onClick={handleLogout}>Logout</button>
               </div>
             )}
@@ -134,7 +140,7 @@ function Navbar() {
       </div>
 
       <div
-        ref={menudots}
+        
         className="menu_icon"
         onClick={() => setMenuOpen(!menuOpen)}
       >
