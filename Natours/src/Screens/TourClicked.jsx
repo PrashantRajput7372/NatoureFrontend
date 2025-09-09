@@ -40,7 +40,7 @@ const TourClicked = () => {
       {/* HERO */}
       <div className="tour-hero">
         <img
-          src={`https://natours-production-b09b.up.railway.app/img/tours/${data.images[0]}`}
+        src={`/img/tours/${data.images[0]}`} 
           alt="hero"
         />
       </div>
@@ -79,7 +79,7 @@ const TourClicked = () => {
               {data.guides.map((guide) => (
                 <div className="tour-guide" key={guide._id}>
                   <img
-                    src={`https://natours-production-b09b.up.railway.app/img/users/${guide.photo}`}
+                    src={`/img/users/${guide.photo}`}
                     alt={guide.name}
                   />
                   <p>
@@ -100,7 +100,7 @@ const TourClicked = () => {
       <div className="image-strip-wrapper">
         {data.images.map((img, index) => (
           <div key={index} className="image-strip-card">
-            <img src={`https://natours-production-b09b.up.railway.app/img/tours/${img}`} alt="" />
+            <img src={`/img/tours/${img}`} alt="" />
           </div>
         ))}
       </div>

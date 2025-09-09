@@ -41,12 +41,12 @@ const ToursNavBar = () => {
         >
           Top 5 Tours
         </button>
-        <button
+        {/* <button
           className={`tab-btn ${isActive("/tours/monthly") ? "active" : ""}`}
           onClick={() => navigate("/tours/monthly")}
         >
           Monthly Plans
-        </button>
+        </button> */}
       </div>
 
       {/* Filters only on AllTours page */}

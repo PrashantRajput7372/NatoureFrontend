@@ -103,7 +103,7 @@ function Navbar() {
             <img
               src={
                 user?.data?.data?.photo
-                  ? `https://natours-production-b09b.up.railway.app/img/users/${user.data.data.photo}`
+                  ? `/img/users/${user.data.data.photo}`
                   : "https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small_2x/user-profile-icon-free-vector.jpg"
               }
               alt="User"
