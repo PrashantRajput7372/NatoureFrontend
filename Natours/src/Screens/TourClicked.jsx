@@ -22,6 +22,7 @@ const TourClicked = () => {
     const fetchTour = async () => {
       try {
         const res = await axios.get(`/tours/${id}`);
+        console.log(res.data.data);
         setData(res.data.data.reqsTour);
       } catch (err) {
         console.error("Error fetching tour by ID:", err);
@@ -35,12 +36,12 @@ const TourClicked = () => {
 
   return (
     <div className="tour-wrapper">
-      {console.log(data)}
+      {/* {console.log(data)} */}
 
       {/* HERO */}
       <div className="tour-hero">
         <img
-        src={`/img/tours/${data.images[0]}`} 
+          src={`/img/tours/${data.images[0].replace(".jpg", ".webp")}`}
           alt="hero"
         />
       </div>
@@ -78,10 +79,7 @@ const TourClicked = () => {
 
               {data.guides.map((guide) => (
                 <div className="tour-guide" key={guide._id}>
-                  <img
-                    src={`/img/users/${guide.photo}`}
-                    alt={guide.name}
-                  />
+                  <img src={`/img/users/${guide.photo}`} alt={guide.name} />
                   <p>
                     <strong>{guide.role}</strong>: {guide.name}
                   </p>
@@ -100,7 +98,7 @@ const TourClicked = () => {
       <div className="image-strip-wrapper">
         {data.images.map((img, index) => (
           <div key={index} className="image-strip-card">
-            <img src={`/img/tours/${img}`} alt="" />
+            <img src={`/img/tours/${img.replace(".jpg", ".webp")}`} alt="" />
           </div>
         ))}
       </div>
@@ -110,11 +108,15 @@ const TourClicked = () => {
         <TourMap locations={data.locations} />
       </div>
       <div className="reviews-section">
-        <div className="tour-section tour-reviews">
-          {data.reviews.map((review, i) => (
-            <ReviewCard key={i} review={review} />
-          ))}
-        </div>
+       <div className="tour-section tour-reviews">
+  {data.reviews && data.reviews.length > 0 ? (
+    data.reviews.map((review, i) =>
+      review ? <ReviewCard key={i} review={review} /> : null
+    )
+  ) : (
+    <div>NO Reviews Yet!!!</div>
+  )}
+</div>
       </div>
 
       <div onClick={() => setOpen(true)} className="add-review">

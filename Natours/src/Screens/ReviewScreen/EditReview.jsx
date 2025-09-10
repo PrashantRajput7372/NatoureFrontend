@@ -29,8 +29,6 @@ const EditReview = ({ open, review, onClose }) => {
 
   return (
     <div>
-      {console.log(review)}
-      {console.log(rating)}
       <Modal open={open} onClose={onClose}>
         <Box
           sx={{

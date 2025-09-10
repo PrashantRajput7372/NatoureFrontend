@@ -2,7 +2,6 @@ import axios from "../Utils/axiosInstance";
 
 export const deleteReview = async (reviewId,) => {
   try {
-    console.log(reviewId, "Review ID in service");
     const res = await axios.delete(`/reviews/${reviewId}`);
     return res.data;
   } catch (error) {

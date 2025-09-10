@@ -1,15 +1,16 @@
 import React, { useEffect, useState } from "react";
 import { top5Tours } from "../Services/authService";
+import { useNavigate } from "react-router-dom";
 import ToursNavBar from "./ToursNavbar";
 
 function TOP5() {
+  const navigate = useNavigate();
   const [tours, setTours] = useState([]);
 
   useEffect(() => {
     const fetchTours = async () => {
       try {
         const data = await top5Tours();
-        console.log(data.tours, "<-- fetched top 5 tours");
         setTours(data.tours); // Assuming API returns { tours: [...] }
       } catch (err) {
         console.error("Error fetching top 5 tours", err);
@@ -18,6 +19,7 @@ function TOP5() {
 
     fetchTours();
   }, []);
+  const handleMoreDetails = (id) => navigate(`/tours/${id}`);
 
   return (
     <div className="all-tours-container">
@@ -27,7 +29,7 @@ function TOP5() {
         {tours.map((item, index) => (
           <div key={index} className="tour-card">
             <img
-              src={`/img/tours/${item.imageCover}`} 
+              src={`/img/tours/${item.imageCover.replace('.jpg', '.webp')}`} 
               alt={item.name}
               className="tour-image"
             />
@@ -44,7 +46,7 @@ function TOP5() {
                 <p>🕒 {item.duration} days</p>
                 <p>💰 ₹{item.price} per person</p>
               </div>
-              <button className="details-btn">Details</button>
+              <button className="details-btn" onClick={() => handleMoreDetails(item.id)}>Details</button>
             </div>
           </div>
         ))}

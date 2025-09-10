@@ -30,8 +30,6 @@ const AddReview = ({ open, tourid, onClose }) => {
 
   return (
     <div>
-      {console.log(tourid)}
-      {console.log(rating)}
       <Modal open={open} onClose={onClose}>
         <Box
           sx={{

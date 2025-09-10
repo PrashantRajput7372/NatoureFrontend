@@ -11,7 +11,6 @@ const ReviewCard = ({ review }) => {
   const [open, setOpen] = useState(false);
 
   const handleDelete = async (id) => {
-    console.log(id);
     try {
       await deleteReview(id);
       window.location.reload(); // Reload to reflect changes
@@ -24,7 +23,7 @@ const ReviewCard = ({ review }) => {
       <div className="rev-card">
         <div className="rev-inner">
           {/* {review&& console.log('Review ID:', review.id ,'Review _id:', review._id)} */}
-          {review.user._id === user.data.data._id && (
+          {review.user._id === user?.data?.data?._id && (
             <div className="rev-edit-delete">
               {" "}
               <button className="rev-edit" onClick={() => setOpen(true)}>

@@ -23,9 +23,9 @@ export default function SignUp() {
       navigate("/");
       alert("User Created");
     } catch (res) {
-      console.log(res);
+      
       const message = res.response.data.message;
-      console.log(res.response.data.message);
+      
       alert(`Login Failed: ${message}`);
     }
   };

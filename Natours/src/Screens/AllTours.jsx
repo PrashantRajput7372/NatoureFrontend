@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import "./CssFiles/AllTours.css"; // CSS file you'll create
+import "./CssFiles/AllTours.css";
 import ToursNavBar from "./ToursNavbar";
 import { FilterContext } from "../Contexts/FilterContext";
 import { useNavigate } from "react-router-dom";
@@ -13,11 +13,11 @@ const AllTours = () => {
   useEffect(() => {
     const fetchTours = async () => {
       try {
-        let endpoint = "https://natours-i6gl.onrender.com/api/v1/tours";
+        let endpoint = `https://natours-i6gl.onrender.com/api/v1/tours`; 
         if (difficulty) endpoint += `?difficulty=${difficulty}`;
         if (sort && difficulty) endpoint += `&sort=${sort}`;
         if (sort && !difficulty) endpoint += `?sort=${sort}`;
-        
+
         const res = await axios.get(endpoint);
         setTours(res.data.data.tours);
       } catch (error) {
@@ -27,28 +27,21 @@ const AllTours = () => {
 
     fetchTours();
   }, [difficulty, sort]);
-  useEffect(() => {
-    
-    
-  }, [difficulty, sort]);
-  const handleMoreDetails = (id) => {
-    
-    navigate(`/tours/${id}`);
-  };
+
+  const handleMoreDetails = (id) => navigate(`/tours/${id}`);
+  
 
   return (
     <div className="all-tours-container">
       <ToursNavBar />
-
       <div className="tour-grid">
         {tours.map((item) => (
-          <div
-            key={item.id}
-            className="tour-card">
+          <div key={item.id} className="tour-card">
             <img
-               src={`/img/tours/${item.imageCover}`} 
-               alt={item.name} 
+              src={`/img/tours/${item.imageCover.replace('.jpg', '.webp')}`}
+              alt={item.name}
               className="tour-image"
+              loading="lazy" // 🔥 Lazy load images
             />
             <div className="tour-details">
               <h3>{item.name}</h3>
@@ -56,14 +49,11 @@ const AllTours = () => {
             </div>
             <div className="card-bottom">
               <div className="tour-meta">
-                <p>
-                  ⭐ {Number(item.ratingsAverage).toFixed(1)} (
-                  {item.ratingsQuantity})
-                </p>
+                <p>⭐ {Number(item.ratingsAverage).toFixed(1)} ({item.ratingsQuantity})</p>
                 <p>🕒 {item.duration} days</p>
                 <p>💰 ₹{item.price} per person</p>
               </div>
-              <button className="details-btn"onClick={() => handleMoreDetails(item.id)}>Details</button>
+              <button className="details-btn" onClick={() => handleMoreDetails(item.id)}>Details</button>
             </div>
           </div>
         ))}

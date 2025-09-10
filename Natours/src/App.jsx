@@ -1,4 +1,4 @@
-import React from "react";
+import React,{Suspense,lazy}from "react";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import "./App.css";
@@ -7,14 +7,17 @@ import Home from "./Screens/Home";
 import Navbar from "./Screens/Navbar";
 import NatoursPromise from "./Screens/NatoursPromise";
 import Login from "./Screens/Login";
-import AllTours from "./Screens/AllTours";
+// import AllTours from "./Screens/AllTours";
+const AllTours = lazy(() => import("./Screens/AllTours"));
+const TourClicked = lazy(() => import("./Screens/TourClicked"));
 import TOP5 from "./Screens/TOP5";
 import { FilterProvider } from "./Contexts/FilterProvider";
-import TourClicked from "./Screens/TourClicked";
+// import TourClicked from "./Screens/TourClicked";
 
 function App() {
   return (
     <>
+    <Suspense fallback={<div className="loader">Loading...</div>}>
       <Router>
         <Navbar />
         <div>
@@ -28,6 +31,7 @@ function App() {
           </Routes>
         </div>
       </Router>
+      </Suspense>
     </>
   );
 }
