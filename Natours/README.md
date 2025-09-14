@@ -2,12 +2,6 @@
 
 This is the frontend of the **Natours** application, a modern travel booking platform. The project is designed to provide a seamless and interactive user experience for booking tours, with a visually appealing interface and robust integration with a backend API.
 
-> ⚠️ **Note on Performance**
->
-> The backend of this project is hosted on **Render (free tier)**.  
-> As a result, the server goes into **sleep mode** if not used for around 15 minutes.  
-> This means that the **first API request may take longer to respond** after a period of inactivity.  
-> Subsequent requests will be fast once the server is awake.
 
 
 ---
@@ -15,6 +9,13 @@ This is the frontend of the **Natours** application, a modern travel booking pla
 
 You can explore the live frontend here:  
 **[https://natoure-frontend.vercel.app/](https://natoure-frontend.vercel.app/)**
+
+> ⚠️ **Note on Performance**
+>
+> The backend of this project is hosted on **Render (free tier)**.  
+> As a result, the server goes into **sleep mode** if not used for around 15 minutes.  
+> This means that the **first API request may take longer to respond** after a period of inactivity.  
+> Subsequent requests will be fast once the server is awake.
 
 ---
 ## 🚀 Tech Stack
