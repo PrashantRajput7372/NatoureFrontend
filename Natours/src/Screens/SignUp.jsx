@@ -5,6 +5,7 @@ import { AuthContext } from "../Contexts/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 import "./CssFiles/Login.css";
+import  Modal  from "./Modal";
 
 export default function SignUp() {
   const navigate = useNavigate();
@@ -14,19 +15,26 @@ export default function SignUp() {
   const [name, setname] = useState("");
   const [confrmPass, setconfrmPass] = useState("");
   const [passval, setPassval] = useState("");
+  const [modalOpen, setModalOpen] = useState(false);
+    const [modalMessage, setModalMessage] = useState("");
+    const [shouldNavigate, setShouldNavigate] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
       const token = await signUp(emailval, name, passval, confrmPass, number);
       setAuthCode(token);
-      navigate("/");
-      alert("User Created");
+      // navigate("/");
+      setModalMessage("🎉 SignUp Successful! Let's Explore Natours!");
+      setShouldNavigate(true);
+      setModalOpen(true);
+      // alert("User Created");
     } catch (res) {
       
       const message = res.response.data.message;
-      
-      alert(`Login Failed: ${message}`);
+      setModalMessage("❌ SignUp Failed! " + message);
+      setModalOpen(true);
+      // alert(`Login Failed: ${message}`);
     }
   };
 
@@ -90,6 +98,13 @@ export default function SignUp() {
           </div>
         </form>
       </div>
+       <Modal
+              openModal={modalOpen}
+              setOpenModal={setModalOpen}
+              message={modalMessage}
+              shouldNavigate={shouldNavigate}
+              navigate={()=>navigate("/")}
+            />
     </div>
   );
 }

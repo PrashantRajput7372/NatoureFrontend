@@ -61,6 +61,10 @@ function Navbar() {
     setAuthCode(null); // clear token in context
     navigate("/")
   };
+  const handleContactClick = () => {
+    setMenuOpen(false)
+    navigate("/ContactUs");
+  }
   const handleProfileClick = () => {
     setShowDropDown((prev) => (!prev ? true : false));
   };
@@ -94,7 +98,7 @@ function Navbar() {
         <div className="hText" onClick={handleHomeClick}>
           Home
         </div>
-        <div className="hText">ContactUs</div>
+        <div className="hText" onClick={handleContactClick}>ContactUs</div>
         {user ? (
           <div className="profile" ref={dropDown}>
             {/* <button className="navButton" onClick={() => handleLogout()}>

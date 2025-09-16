@@ -27,7 +27,7 @@ export const signUp = async (
     confirmPassword,
     phoneNumber,
   });
-  return res.data;
+  return res.data.token;
 };
 
 export const alltour = async () => {

@@ -12,6 +12,7 @@ const AllTours = lazy(() => import("./Screens/AllTours"));
 const TourClicked = lazy(() => import("./Screens/TourClicked"));
 import TOP5 from "./Screens/TOP5";
 import { FilterProvider } from "./Contexts/FilterProvider";
+import ContactSection from "./Screens/ContactSection";
 // import TourClicked from "./Screens/TourClicked";
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
             <Route path="/signup" element={<SignUp />} />
             <Route path="/login" element={<Login />} />
             <Route path="/alltours" element={<AllTours />} />
+            <Route path="/contactUs" element={<ContactSection/>} />
             <Route path="/tours/top-5" element={<TOP5 />} />
             <Route path="/tours/:id" element={<TourClicked />} />
           </Routes>
