@@ -59,6 +59,27 @@
 .dropdown-menu button:hover {
   background-color: #c0392b;
 }
+.dropdown-menu::before {
+  content: "";
+  position: absolute;
+  top: -10px; /* Adjust for outer border */
+  right: 10px;
+  border-left: 9px solid transparent;
+  border-right: 9px solid transparent;
+  border-bottom: 9px solid #ccc; /* Border color */
+  z-index: 1;
+}
+
+.dropdown-menu::after {
+  content: "";
+  position: absolute;
+  top: -8px; /* Slightly lower than ::before */
+  right: 11px; /* Slightly center aligned */
+  border-left: 8px solid transparent;
+  border-right: 8px solid transparent;
+  border-bottom: 8px solid white; /* Same as dropdown bg */
+  z-index: 2;
+}
 
 
 .logo {
