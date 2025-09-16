@@ -23,21 +23,31 @@ const ReviewCard = ({ review }) => {
       <div className="rev-card">
         <div className="rev-inner">
           {/* {review&& console.log('Review ID:', review.id ,'Review _id:', review._id)} */}
-          {review.user._id === user?.data?.data?._id && (
-            <div className="rev-edit-delete">
-              {" "}
-              <button className="rev-edit" onClick={() => setOpen(true)}>
-                <FaEdit />
-              </button>
-              <button className="rev-delete">
-                <AiFillDelete onClick={() => handleDelete(review._id)} />
-              </button>
-            </div>
-          )}
+            {review.user._id === user?.data?.data?._id ? (
+                <div className="rev-edit-delete">
+                  <button className="rev-edit" onClick={() => setOpen(true)}>
+                    <FaEdit />
+                  </button>
+                  <button className="rev-delete" onClick={() => handleDelete(review._id)}>
+                    <AiFillDelete />
+                  </button>
+                </div>
+              ) : (
+                <div className="rev-edit-delete invisible-placeholder">
+                  <button className="rev-edit" disabled>
+                    <FaEdit />
+                  </button>
+                  <button className="rev-delete" disabled>
+                    <AiFillDelete />
+                  </button>
+                </div>
+              )}
+                
 
           <div className="img-container">
             <img
-              src={`/img/users/${review.user.photo}`}
+              src={review.user.photo?`/img/users/${review.user.photo}`:"https://static.vecteezy.com/system/resources/thumbnails/002/318/271/small_2x/user-profile-icon-free-vector.jpg"}
+              
               alt={"userImage"}
               className="rev-img"
             />

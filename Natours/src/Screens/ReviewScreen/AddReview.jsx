@@ -8,10 +8,14 @@ import {
   Button,
 } from "@mui/material";
 import { addReview } from "../../Services/reviewService";
+import CoustomModal from "../Modal";
 
 const AddReview = ({ open, tourid, onClose }) => {
   const [text, setText] = useState("");
   const [rating, setRating] = useState("");
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
+  const [shouldNavigate, setShouldNavigate] = useState(false);
 
   const handleSubmit = async (tourid, text, rating) => {
     try {
@@ -20,10 +24,15 @@ const AddReview = ({ open, tourid, onClose }) => {
 
       if (res) {
         onClose(); // close modal after update
-        window.location.reload();
+        setModalMessage("🎉 Review updated Successfully!");
+        setModalOpen(true);
+        setShouldNavigate(true)
+        // window.location.reload();
       }
     } catch (err) {
       alert(err.response.data.message);
+      setModalMessage("❌ Review update Failed! " + err.response.data.message);
+      setModalOpen(true);
       console.error("Review update failed", err.response.data.message);
     }
   };
@@ -77,6 +86,13 @@ const AddReview = ({ open, tourid, onClose }) => {
           </Box>
         </Box>
       </Modal>
+      <CoustomModal
+        openModal={modalOpen}
+        setOpenModal={setModalOpen}
+        message={modalMessage}
+        shouldNavigate={shouldNavigate}
+        navigate={() => window.location.reload()}
+      />
     </div>
   );
 };

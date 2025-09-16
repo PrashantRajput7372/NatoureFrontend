@@ -64,7 +64,7 @@
 
 .rev-description {
   color: black;
-  text-align: left;
+  text-align: center;
   margin-top: 5px;
 
   /* Fix long review text overflow */
@@ -99,6 +99,10 @@
   justify-content: center;
   font-size: 25px;
   font-weight: 500;
+}
+.invisible-placeholder {
+  opacity: 0;
+  pointer-events: none;
 }
 
 @media screen and (max-width: 900px) {
