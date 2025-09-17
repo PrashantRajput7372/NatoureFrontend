@@ -5,11 +5,18 @@ import NavLogo from "../assets/tree.png";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../Contexts/AuthContext";
 import { logout } from "../Services/authService";
+import CustomModal from "./Modal";
 
 function Navbar() {
+
   const navigate = useNavigate();
   const dropDown = useRef();
   const [showDropDown, setShowDropDown] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
+  const [typepopup, setTypepopup] = useState("");
+  const [modalOpen, setModalOpen] = useState(false);
+  const [shouldNavigate, setShouldNavigate] = useState(false);
+
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (dropDown.current && !dropDown.current.contains(event.target)) {
@@ -58,8 +65,12 @@ function Navbar() {
   const handleLogout = () => {
     setMenuOpen(false)
     logout();
+    setModalMessage("Logged out successfully!");
+    setTypepopup("Info")
+    setShouldNavigate(true)
+    setModalOpen(true);
     setAuthCode(null); // clear token in context
-    navigate("/")
+    // navigate("/")
   };
   const handleContactClick = () => {
     setMenuOpen(false)
@@ -79,7 +90,7 @@ function Navbar() {
 
   return (
     <div className="navbar_container">
-      <div className="logo_container">
+      <div className="logo_container" onClick={handleHomeClick}>
         <img
           src={NavLogo}
           className="logo_img"
@@ -150,6 +161,14 @@ function Navbar() {
       >
         ☰
       </div>
+      <CustomModal
+        typepopup={typepopup}
+        openModal={modalOpen}
+        setOpenModal={setModalOpen}
+        message={modalMessage}
+        shouldNavigate={shouldNavigate}
+        navigate={()=>navigate("/")}
+      />
     </div>
   );
 }

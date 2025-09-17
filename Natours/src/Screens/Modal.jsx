@@ -4,7 +4,7 @@ import { Modal, Button } from '@mui/material';
 import "./CssFiles/Modal.css"
 
 
-export default function CustomModal({ openModal, setOpenModal , message,shouldNavigate, navigate}) {
+export default function CustomModal({ openModal, setOpenModal , message,shouldNavigate,typepopup, navigate}) {
   const handleClose = () => {
     setOpenModal(false);
     
@@ -26,7 +26,20 @@ export default function CustomModal({ openModal, setOpenModal , message,shouldNa
       
       <div className='parent_div'>
         
-      <div className='head_div'>"Welcome to Natours"</div>
+      <div className='head_div'style={
+          typepopup === "Info"
+            ? { color: "blue", fontWeight: "bold",fontFamily:"Arial" }
+            : typepopup === "Alert"
+            ? { color: "red",fontWeight: "bold",fontFamily:"Arial" }
+            : {
+                background: "linear-gradient(to right, #007bff, #e40f7a)",
+                fontWeight: "bold",
+                fontFamily:"Arial",
+                backgroundClip: "text",
+                WebkitBackgroundClip: "text",
+                WebkitTextFillColor: "transparent",
+              }
+        }>{typepopup}</div>
       <div>{message}</div>
       <div className='btn'><Button variant="contained" onClick={handleClose}>
         Close</Button></div>

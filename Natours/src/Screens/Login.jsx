@@ -13,6 +13,7 @@ function Login() {
   const [password, setPassword] = useState("");
   const [modalOpen, setModalOpen] = useState(false);
   const [modalMessage, setModalMessage] = useState("");
+  const [typepopup, setTypepopup] = useState("");
   const [shouldNavigate, setShouldNavigate] = useState(false);
 
   const resetForm = () => {
@@ -23,6 +24,7 @@ function Login() {
   const handleLoginSuccess = (token) => {
     setAuthCode(token);
     localStorage.setItem("authToken", token);
+    setTypepopup("WelCome to Natours")
     setModalMessage("🎉 Login Successful! Let's Explore Natours!");
     setShouldNavigate(true);
     setModalOpen(true);
@@ -31,6 +33,7 @@ function Login() {
   const handleLoginError = (error) => {
     const errorMessage =
       error?.response?.data?.message || "Something went wrong. Please try again.";
+    setTypepopup("Alert")
     setModalMessage("❌ Login Failed! " + errorMessage);
     setModalOpen(true);
   };
@@ -87,6 +90,7 @@ function Login() {
       </div>
 
       <Modal
+        typepopup={typepopup}
         openModal={modalOpen}
         setOpenModal={setModalOpen}
         message={modalMessage}

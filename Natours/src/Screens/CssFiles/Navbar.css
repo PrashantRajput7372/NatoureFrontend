@@ -87,6 +87,7 @@
   font-size: 2rem;
   font-family: fantasy;
   white-space: nowrap;
+  cursor: pointer;
 }
 
 .logo .nat {

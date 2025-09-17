@@ -8,10 +8,15 @@ import {
   Button,
 } from "@mui/material";
 import { editReview } from "../../Services/reviewService";
+import CustomModal from "../Modal";
 
 const EditReview = ({ open, review, onClose }) => {
   const [text, setText] = useState(review.review);
   const [rating, setRating] = useState(review.rating);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
+  const [shouldNavigate, setShouldNavigate] = useState(false);
+  const [typepopup, setTypepopup] = useState("");
 
   const handleSubmit = async (id, text, rating) => {
     try {
@@ -19,11 +24,19 @@ const EditReview = ({ open, review, onClose }) => {
       const res = await editReview(id, text, rat);
 
       if (res) {
-        onClose(); // close modal after update
-        window.location.reload();
+        onClose(); // close review modal after update
+        setModalMessage("🎉 Review updated Successfully!");
+        setTypepopup("Info");
+        setModalOpen(true);
+        setShouldNavigate(true);
+        // window.location.reload();
       }
     } catch (err) {
       console.error("Review update failed", err);
+      setModalMessage("❌ Review update Failed! " + (err.response?.data?.message || "Please try again."));
+      setTypepopup("Alert");
+      setModalOpen(true);
+      setShouldNavigate(false);
     }
   };
 
@@ -76,6 +89,14 @@ const EditReview = ({ open, review, onClose }) => {
           </Box>
         </Box>
       </Modal>
+      <CustomModal
+          typepopup={typepopup}
+          openModal={modalOpen}
+          setOpenModal={setModalOpen}
+          message={modalMessage}
+          shouldNavigate={shouldNavigate}
+          navigate={() => window.location.reload()}
+        />
     </div>
   );
 };

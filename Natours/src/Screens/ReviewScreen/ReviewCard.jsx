@@ -5,17 +5,30 @@ import { deleteReview } from "../../Services/reviewService";
 import { AiFillDelete } from "react-icons/ai";
 import { FaEdit } from "react-icons/fa";
 import EditReview from "./EditReview";
+import CustomModal from "../Modal";
 
 const ReviewCard = ({ review }) => {
   const { user } = useContext(AuthContext);
   const [open, setOpen] = useState(false);
+  const [modalMessage, setModalMessage] = useState("");
+    const [typepopup, setTypepopup] = useState("");
+    const [modalOpen, setModalOpen] = useState(false);
+    const [shouldNavigate, setShouldNavigate] = useState(false);
 
   const handleDelete = async (id) => {
     try {
       await deleteReview(id);
-      window.location.reload(); // Reload to reflect changes
+      setModalMessage("🎉 Review deleted Successfully!");
+      setTypepopup("Info");
+      setModalOpen(true);
+      setShouldNavigate(true);
+      // window.location.reload(); // Reload to reflect changes
     } catch (error) {
       console.error("Error deleting review:", error);
+      setModalMessage("❌ Review deletion failed! " + (error.response?.data?.message || "Not able to delete."));
+      setTypepopup("Alert")
+      setModalOpen(true); 
+      shouldNavigate(false)
     }
   };
   if (review !== null)
@@ -67,6 +80,14 @@ const ReviewCard = ({ review }) => {
           onClose={() => setOpen(false)}
           review={review}
         />
+        <CustomModal
+          typepopup={typepopup}
+          openModal={modalOpen}
+          setOpenModal={setModalOpen}
+          message={modalMessage}
+          shouldNavigate={shouldNavigate}
+          navigate={()=>window.location.reload()}
+          />
       </div>
     );
 };
