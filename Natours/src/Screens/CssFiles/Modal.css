@@ -8,24 +8,45 @@
     background-color: #fffefe;
     display: flex;
     flex-direction: column;
-    border: 2px solid #000;
-    border-radius: 8px;
+    border: 1px solid #c6c6c6;
+    box-shadow: #7e7d7d 0px 0px 0px 1px;
+    border-radius: 6px;
     justify-content: center;
     align-items: center;
     z-index: 1000;
-    padding: 20px;
+    padding: 0px 10px 10px 10px;
     transform: translate(-50%, -50%);
     
 }
+
 .head_div{
     font-size: 24px;
     font-weight: bold;
+    width: calc(100% + 20px);
+    background-color: #1976d2;
+    color: white;
+    border-radius: 6px 6px 0px 0px;
     /* margin-bottom: 20px; */
-    text-align: center;
-    padding:10px;
+    text-align: left;
+    padding:10px 10px 5px 10px;
+    font-size:24px ;
+}
+.divider{
+    width: calc(100% + 40px);
+    height: 0.5px;
+    background-color: #c6c6c6;
+    margin: 0px 0px 10px 0px;
+    /* text-align: left; */
+}
+.msg{
+    width: 100%;
+    font-size:  20px;
+    text-align: left;
+    padding: 5px;
 }
 .btn{
     padding: 2px ;
+    width: 100%;
     /* align-items: center; */
     margin-top: 20px;
 }

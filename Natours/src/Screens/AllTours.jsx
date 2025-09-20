@@ -8,6 +8,7 @@ import { useNavigate } from "react-router-dom";
 const AllTours = () => {
   const navigate = useNavigate();
   const [tours, setTours] = useState([]);
+  const [loading, setLoading] = useState(false);
   const { difficulty, sort } = useContext(FilterContext);
 
   useEffect(() => {
@@ -20,6 +21,7 @@ const AllTours = () => {
 
         const res = await axios.get(endpoint);
         setTours(res.data.data.tours);
+        setLoading(true);
       } catch (error) {
         console.error("Error fetching tours", error);
       }
@@ -35,12 +37,13 @@ const AllTours = () => {
     <div className="all-tours-container">
       <ToursNavBar />
       <div className="tour-grid">
-        {tours.map((item) => (
+        {loading ?(tours.map((item) => (
           <div key={item.id} className="tour-card">
             <img
               src={`/img/tours/${item.imageCover.replace('.jpg', '.webp')}`}
               alt={item.name}
               className="tour-image"
+              // onLoad={() => setLoading(false)}
               loading="lazy" // 🔥 Lazy load images
             />
             <div className="tour-details">
@@ -56,7 +59,23 @@ const AllTours = () => {
               <button className="details-btn" onClick={() => handleMoreDetails(item.id)}>Details</button>
             </div>
           </div>
-        ))}
+        ))):( Array(6).fill({}).map((_, idx) => (
+        <div key={idx} className="tour-card">
+          <div className="image-placeholder" />
+          <div className="tour-details">
+            <h3>Loading...</h3>
+            <p>Please wait</p>
+          </div>
+          <div className="card-bottom">
+            <div className="tour-meta">
+              <p>⭐ --</p>
+              <p>🕒 -- days</p>
+              <p>💰 ₹-- per person</p>
+            </div>
+            <button className="details-btn" disabled>Details</button>
+          </div>
+        </div>
+      )))}
       </div>
     </div>
   );
