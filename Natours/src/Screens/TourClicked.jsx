@@ -184,7 +184,7 @@ const TourClicked = () => {
             <div className="action-card">
               <h3>Help us improve 💬</h3>
               <p>Share your review or feedback with us</p>
-              <Button className="btn-review">Add Review</Button>
+              <Button className="btn-review" onClick={()=>setOpen(true)}>Add Review</Button>
             </div>
           </div>
       <AddReview open={open} onClose={() => setOpen(false)} tourid={data._id} />

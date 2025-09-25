@@ -1,3 +1,8 @@
+.body {
+  font-family: 'Roboto', sans-serif;
+  background-color: #f9f9f9;
+  color: #333;
+}
 .fav-wrapper {
   max-width: 1200px;
   margin: 0 auto;
@@ -20,6 +25,12 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
   background: white;
   flex: 1 1 250px;
+}
+.fav-card:hover {
+  transform: translateY(-10px);
+  scale: 1.05;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
 }
 
 .fav_img {

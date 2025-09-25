@@ -1,5 +1,5 @@
 .tour-wrapper {
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 /* Hero */
@@ -82,7 +82,7 @@
 .tour-about h2{
     display: flex;
     justify-content: center;
-    margin-bottom: 10px;
+    padding-top: 30px;
     background: linear-gradient(to right, rgb(2, 2, 228), rgb(73, 55, 233), rgb(255, 0, 0));
     background-clip: text;
   -webkit-background-clip: text;
@@ -169,6 +169,16 @@
 .reviews-section{
   padding: 40px;
 }
+.review-title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: bold;
+  background-color: #ede9e9;
+  padding-top: 20px;
+  
+}
 .tour-reviews {
   display: flex;
   flex-direction: row;
@@ -179,12 +189,74 @@
   background-color: #ede9e9; 
   
 }
-.tour-book {
-  background-color: #e80c3c;
+.tour-book { 
+    display: flex;
+    align-items: center;   
+    justify-content: center;
+    padding: 10px; 
+}
+.action-section {
+  display: flex;
+  gap: 30px;
+  justify-content: center;
+  margin: 30px auto;
+  position: relative;
+}
+
+.action-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+  padding: 20px;
+  text-align: center;
+  width: 280px;
+}
+.action-card h3 {
+  margin-bottom: 10px;
+  font-size: 20px;
+  color: #333;
+}
+.action-card p {
+  font-size: 16px;
+  color: #666;
+  margin-bottom: 15px;
+}
+
+.btn-book {
+  background-color: green !important;
+  color: white !important;
+  border-radius: 20px !important;
+  padding: 5px 10px !important;
+}
+
+.btn-review {
+  background-color: #007bff !important;
+  color: white !important;
+  border-radius: 20px !important;
+  padding: 5px 10px !important;
+  /* position: absolute !important; */
+  /* bottom: 25px !important; */
+
+}
+
+.btn-book-rev{
+    background-color: rgb(34, 198, 34) !important;
+    color: white !important;
+    font-weight: bold !important;
+    border-radius: 20px !important;
+    padding: 5px 10px !important;
+    margin-left: 20px !important;
+}
+.btn-book-rev:hover{
+    background-color: rgb(24, 177, 24) !important;
+    transform: scale(1.05)!important;
 }
 
 /* For tablets and below (max-width: 900px) */
 @media (max-width: 900px) {
+  .action-section{
+    padding: 10px;
+  }
   .tour-info-section {
     flex-direction: column;
     padding: 30px 20px;
@@ -240,7 +312,11 @@
   
 }
 
-
+@media (max-width: 900px) {
+  .image-strip-wrapper {
+    flex-direction: column;
+  }
+}
 
 /* For large mobile (max-width: 600px) */
 @media (max-width: 600px) {
@@ -255,12 +331,12 @@
 
   .tour-guide {
     flex-wrap: wrap;
-    justify-content: center;
+    /* justify-content: center; */
   }
 
   .tour-guide img {
-    width: 50px;
-    height: 50px;
+    width: 60px;
+    height: 60px;
     margin-bottom: 8px;
   }
 

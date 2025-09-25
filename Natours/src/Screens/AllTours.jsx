@@ -72,7 +72,7 @@ const AllTours = () => {
               <p>🕒 -- days</p>
               <p>💰 ₹-- per person</p>
             </div>
-            <button className="details-btn" disabled>Details</button>
+            <button className="details-btn" disabled style={{backgroundColor:"gray", cursor:"not-allowed"}}>Details</button>
           </div>
         </div>
       )))}
