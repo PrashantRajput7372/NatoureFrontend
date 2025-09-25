@@ -12,11 +12,37 @@ import "./CssFiles/TourClicked.css";
 import ReviewCard from "./ReviewScreen/ReviewCard";
 import AddReview from "./ReviewScreen/AddReview";
 import Footer from "./Footer";
+import { loadStripe } from "@stripe/stripe-js";
+import { getAuthCode } from "../Services/authService";
+import { Button } from "@mui/material";
 
 const TourClicked = () => {
   const { id } = useParams();
   const [data, setData] = useState(null);
   const [open, setOpen] = useState(false);
+
+  const token = getAuthCode();
+  console.log("Auth Token:", token);
+
+  const stripePromise = loadStripe(
+    "pk_test_51S9nP3K1oNIYPRRMbIJVy86qGn0TiZ3tLL2jV3Z2vPjF0yKnXTEYT17Pm8tmgsZba4MP3TCDqBnMwyoozhLYFzf500el8wdny9"
+  );
+
+  const handleBooking = async () => {
+    console.log("Booking clicked", id);
+    const url = `https://natours-i6gl.onrender.com/api/v1/booking/checkout-session/${id}`;
+    console.log(url);
+    const res = await axios.get(url, {
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
+    });
+    const data = res.data;
+    console.log(data);
+
+    const stripe = await stripePromise;
+    await stripe.redirectToCheckout({ sessionId: data.session.id });
+  };
 
   useEffect(() => {
     const fetchTour = async () => {
@@ -79,7 +105,10 @@ const TourClicked = () => {
 
               {data.guides.map((guide) => (
                 <div className="tour-guide" key={guide._id}>
-                  <img src={`/img/users/${guide.photo}`} alt={guide.name} />
+                  <img
+                    src={`/img/users/${guide.photo.split(".")[0]}.jpg`}
+                    alt={guide.name}
+                  />
                   <p>
                     <strong>{guide.role}</strong>: {guide.name}
                   </p>
@@ -108,24 +137,56 @@ const TourClicked = () => {
         <TourMap locations={data.locations} />
       </div>
       <div className="reviews-section">
-       <div className="tour-section tour-reviews">
-  {data.reviews && data.reviews.length > 0 ? (
-    data.reviews.map((review, i) =>
-      review ? <ReviewCard key={i} review={review} /> : null
-    )
-  ) : (
-    <div>NO Reviews Yet!!!</div>
-  )}
-</div>
+        <div className="review-title"> 
+          <span>
+            WHAT OUR TRAVELERS <span style={{ color: "red" }}>ARE SAYING </span>
+          </span>
+          </div>
+        <div className="tour-section tour-reviews">
+          {data.reviews && data.reviews.length > 0 ? (
+            data.reviews.map((review, i) =>
+              review ? <ReviewCard key={i} review={review} /> : null
+            )
+          ) : (
+            <div>NO Reviews Yet!!!</div>
+          )}
+        </div>
       </div>
 
-      <div onClick={() => setOpen(true)} className="add-review">
-        ADD Review
+      {/* <div 
+        className="tour-book"
+       >
+        <span style={{ fontWeight: "bold", fontSize: "16px", color: "black" }}>
+          share your review or feedback to help us improve your experience
+        </span>
+        <Button className="btn-book-rev" onClick={() => setOpen(true)}>
+          ADD Review
+        </Button>
       </div>
 
-      <div className="tour-section tour-book">
-        Booking section Work is in process
-      </div>
+      <div className="tour-book">
+        <span style={{ fontWeight: "bold", fontSize: "16px", color: "black" }}>
+          Your adventure awaits – Book now for ₹{data.price}
+        </span>
+          
+        <Button  className="btn-book-rev" 
+          onClick={handleBooking}>
+          Book Tour 
+        </Button>
+      </div> */}
+                <div className="action-section">
+            <div className="action-card">
+              <h3>Your adventure awaits ✨</h3>
+              <p>Secure your spot before seats run out</p>
+              <Button className="btn-book" onClick={handleBooking}>Book Now</Button>
+            </div>
+
+            <div className="action-card">
+              <h3>Help us improve 💬</h3>
+              <p>Share your review or feedback with us</p>
+              <Button className="btn-review">Add Review</Button>
+            </div>
+          </div>
       <AddReview open={open} onClose={() => setOpen(false)} tourid={data._id} />
       <Footer />
     </div>

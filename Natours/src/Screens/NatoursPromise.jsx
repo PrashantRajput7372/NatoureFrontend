@@ -35,7 +35,10 @@ function NatoursPromise() {
   
     return (
   <div className="natours-wrapper">
+    <div style={{ textAlign: "center", marginBottom: "20px" }}>
     <h1>Why Choose Natours</h1>
+      <span style={{ color: "red", marginBottom:"10px"}}>(Is only tell you the what we promise to our Users, nonClickable)</span>
+      </div>
     <br />
     <div className="natours-content">
       {WhyChooseNatours.map((item, index) => (
