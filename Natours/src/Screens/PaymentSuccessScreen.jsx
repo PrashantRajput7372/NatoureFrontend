@@ -13,9 +13,9 @@ function PaymentSuccessScreen() {
     const amount = searchParams.get('amount');
 
     
-        setTimeout(() => {
-            window.location.href = '/allTours';
-        },4000);
+       setTimeout(() => {
+    window.location.href = `/tours/${tourId}`;
+  }, 4500);
         
   return (
    
