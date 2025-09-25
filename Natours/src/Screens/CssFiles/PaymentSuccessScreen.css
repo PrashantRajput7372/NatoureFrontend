@@ -1,0 +1,149 @@
+.payment-success-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f3f3f3;
+  padding: 20px;
+}
+
+.payment-success-card {
+  background-color: #fff;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+  border-radius: 24px;
+  padding: 40px 30px;
+  width: 100%;
+  max-width: 450px;
+  text-align: center;
+}
+
+.payment-success-icon {
+  background-color: #22c55e; /* green */
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 20px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.payment-success-icon span {
+  color: #fff;
+  font-size: 36px;
+  font-weight: bold;
+}
+
+.payment-success-title {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1f2937;
+  margin-bottom: 10px;
+}
+
+.payment-success-message {
+  font-size: 1rem;
+  color: #6b7280;
+  margin-bottom: 20px;
+}
+
+.payment-success-details {
+  background-color: #f3f4f6;
+  border-radius: 16px;
+  padding: 20px;
+  margin-bottom: 20px;
+  text-align: left;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.payment-success-details p {
+  margin: 6px 0;
+}
+
+.payment-success-details span {
+  font-weight: 600;
+}
+
+.payment-success-footer {
+  font-size: 0.875rem;
+  color: #4b5563;
+}
+
+/* Media Queries */
+
+/* <= 900px */
+@media (max-width: 900px) {
+  .payment-success-card {
+    padding: 35px 25px;
+    max-width: 400px;
+  }
+}
+
+/* <= 600px */
+@media (max-width: 600px) {
+  .payment-success-card {
+    padding: 30px 20px;
+    max-width: 350px;
+  }
+
+  .payment-success-icon {
+    width: 70px;
+    height: 70px;
+  }
+
+  .payment-success-icon span {
+    font-size: 32px;
+  }
+
+  .payment-success-title {
+    font-size: 1.4rem;
+  }
+}
+
+/* <= 520px */
+@media (max-width: 520px) {
+  .payment-success-card {
+    padding: 25px 15px;
+    max-width: 300px;
+  }
+
+  .payment-success-title {
+    font-size: 1.3rem;
+  }
+
+  .payment-success-message {
+    font-size: 0.95rem;
+  }
+
+  .payment-success-details {
+    padding: 15px;
+    font-size: 0.9rem;
+  }
+}
+
+/* <= 368px */
+@media (max-width: 368px) {
+  .payment-success-card {
+    padding: 20px 12px;
+    max-width: 260px;
+  }
+
+  .payment-success-title {
+    font-size: 1.2rem;
+  }
+
+  .payment-success-message {
+    font-size: 0.9rem;
+  }
+
+  .payment-success-details {
+    padding: 12px;
+    font-size: 0.85rem;
+  }
+
+  .payment-success-footer {
+    font-size: 0.8rem;
+  }
+}
